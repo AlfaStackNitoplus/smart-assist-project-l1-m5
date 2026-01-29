@@ -1,7 +1,3 @@
-<app-header></app-header>
-<app-login
-  [title]="'Smart Assist Login'"
-  (loginSubmit)="handleLogin($event)">
-</app-login>
-<app-footer></app-footer>
-
+<app-header [version]="version"></app-header>
+<router-outlet />
+<app-footer [develop]="develop"></app-footer>

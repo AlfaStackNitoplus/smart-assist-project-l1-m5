@@ -1,12 +1,17 @@
 <mat-toolbar color="primary">
+  @if (isLogin) {
   <button mat-icon-button aria-label="Menu" (click)="toggleMenu()">
     <mat-icon>menu</mat-icon>
   </button>
+  }
 
-  <span>SmartAssist</span>
+  <div class="title-container">
+    <span class="app-title">SmartAssist</span>
+    <span class="app-subtitle">Version: {{version}}</span>
+  </div>
 
   <span class="header-spacer"></span>
-
+  @if (isLogin) {
   <button mat-icon-button [matMenuTriggerFor]="userMenu" aria-label="User menu">
     <mat-icon>account_circle</mat-icon>
   </button>
@@ -21,4 +26,5 @@
       <span>Logout</span>
     </button>
   </mat-menu>
+  }
 </mat-toolbar>

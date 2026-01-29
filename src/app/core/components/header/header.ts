@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
@@ -16,9 +16,11 @@ import { MatToolbarModule } from '@angular/material/toolbar';
   styleUrl: './header.scss',
 })
 export class Header {
- toggleMenu() {
-    // Logic to open/close a side navigation menu
-    console.log('Menu button clicked!');
+  @Input() version: string = '';
+  @Input() isLogin: boolean = false;
+  @Output() menuToggle = new EventEmitter<void>();
+  toggleMenu() {
+    this.menuToggle.emit();
   }
 
   logout() {

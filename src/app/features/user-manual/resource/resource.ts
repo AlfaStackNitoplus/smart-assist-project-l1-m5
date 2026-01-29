@@ -5,14 +5,14 @@ import { MatDividerModule } from '@angular/material/divider';
 import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-about',
-  imports: [ CommonModule,
+  selector: 'app-resource',
+  imports: [CommonModule,
     RouterModule,
     MatCardModule,
     MatDividerModule],
-  templateUrl: './about.html',
-  styleUrl: './about.scss',
+  templateUrl: './resource.html',
+  styleUrl: './resource.scss',
 })
-export class About {
+export class Resource {
 
 }

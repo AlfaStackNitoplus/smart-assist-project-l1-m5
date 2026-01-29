@@ -6,6 +6,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { Router } from '@angular/router';
+import { MockData } from '../../../assets/mock-data';
 @Component({
   selector: 'app-login',
   imports: [FormsModule,
@@ -19,17 +21,47 @@ import { MatInputModule } from '@angular/material/input';
   styleUrl: './login.scss',
 })
 export class Login {
-  @Input() title: string = 'Login';
-  @Output() loginSubmit = new EventEmitter<any>();
-
+  title: string = 'Login';
   username = '';
   password = '';
+  constructor(private router: Router) { }
 
   onLogin() {
-    this.loginSubmit.emit({
-      username: this.username,
-      password: this.password
-    });
-  }
+    const user = MockData.users.find(u => u.email === this.username && u.password === this.password);
 
+    if (!user) {
+      alert('Invalid email or password');
+      return;
+    }
+    switch (user.role) {
+
+      case 'ADMIN':
+        this.router.navigate(['/admin'], {
+          queryParams: {
+            role: user.role,
+            id: user.userId
+          }
+        });
+        break;
+
+      case 'SUPPORT_ENGINEER':
+        this.router.navigate(['/support'], {
+          queryParams: {
+            role: user.role,
+            id: user.userId
+          }
+        });
+        break;
+
+      case 'USER':
+        this.router.navigate(['/user'], {
+          queryParams: {
+            role: user.role,
+            id: user.userId
+          }
+        });
+        break;
+    }
+
+  }
 }
