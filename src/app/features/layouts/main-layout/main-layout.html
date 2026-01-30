@@ -3,9 +3,11 @@
         <mat-toolbar>Menu</mat-toolbar>
         <mat-nav-list>
             @for (item of getMenusByRole(); track $index) {
-                <a mat-list-item [routerLink]="item.route" routerLinkActive="active-link">
-                    <mat-icon>{{ item.icon }}</mat-icon>
+                <a mat-list-item [routerLink]="item.route" routerLinkActive="active-link" >
+                  <div class="item">
+                      <mat-icon>{{ item.icon }}</mat-icon>
                     <span>{{ item.menuName }}</span>
+                  </div>
                 </a>
             }
         </mat-nav-list>

@@ -61,8 +61,8 @@ export class MockData {
             ticketId: 23,
             createdByUserId: 'U001',
             description: 'Home page is not loading',
-            priority: 'High',
-            status: 'Closed',
+            priority: 1,
+            status: 2,
             createdAt: '2026-01-20T10:30:00Z',
             age: 1,
             assignedToUserId: 'U002'
@@ -71,8 +71,8 @@ export class MockData {
             ticketId: 22,
             createdByUserId: 'U001',
             description: 'Unable to login',
-            priority: 'High',
-            status: 'Resolved',
+            priority: 3,
+            status: 3,
             createdAt: '2026-01-19T09:00:00Z',
             age: 2,
             assignedToUserId: 'U003'
@@ -81,8 +81,8 @@ export class MockData {
             ticketId: 21,
             createdByUserId: 'U002',
             description: 'Chat window not opening',
-            priority: 'Medium',
-            status: 'Open',
+            priority: 2,
+            status: 1,
             createdAt: '2026-01-21T08:15:00Z',
             age: 0
         }
