@@ -5,16 +5,14 @@
     <mat-card-title>
       Welcome, {{ userName }} 👋
     </mat-card-title>
-    <mat-card-content>
-      <!-- Here are your tickets and their statuses. -->
-    </mat-card-content>
   </mat-card>
 
   <!-- Tickets Table -->
   <mat-card class="ticket-card">
     <mat-card-title>My Tickets</mat-card-title>
+    @if (userTickets$ | async; as tickets) {
+    <table mat-table [dataSource]="tickets" class="mat-elevation-z1">
 
-    <table mat-table [dataSource]="userTickets" class="mat-elevation-z1">
 
       <!-- Ticket ID -->
       <ng-container matColumnDef="ticketId">
@@ -65,10 +63,11 @@
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;" appInteractiveRow></tr>
-
+      <tr mat-row *matRowDef="let row; columns: displayedColumns" appInteractiveRow></tr>
     </table>
-    @if (userTickets.length === 0) {
+    }
+    <!-- ✅ Reactive Empty State -->
+    @if ((userTickets$ | async)?.length === 0) {
     <p class="no-data">
       No tickets found for this user.
     </p>
