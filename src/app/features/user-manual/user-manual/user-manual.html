@@ -2,38 +2,123 @@
   <mat-card class="manual-card">
 
     <!-- Title -->
-    <h1>Using the Application</h1>
+    <h1>Using the Application – User Manual (L1M5)</h1>
     <mat-divider></mat-divider>
 
     <section>
 
+      <!-- LOGIN -->
       <h3>Step 1: Login</h3>
       <ul>
-        <li>When the application opens, the <b>Login</b> page is displayed.</li>
-        <li>Enter your <b>User ID</b> in the provided field.</li>
-        <li>Enter your <b>Password</b>.</li>
-        <li>Click the <b>Login</b> button to proceed.</li>
-        <li>The Login button becomes enabled once the User ID is entered.</li>
+        <li>Open the application to view the <b>Login</b> page.</li>
+        <li>Enter your <b>User ID</b> and <b>Password</b>.</li>
+        <li>Click <b>Login</b>.</li>
+        <li>The Login button is enabled only after entering valid details.</li>
       </ul>
 
+
+      <!-- DASHBOARD -->
       <h3>Step 2: Dashboard</h3>
       <ul>
-        <li>After successful login, you are redirected to the <b>Dashboard</b> based on your role.</li>
-        <li>The dashboard displays a welcome message with your user name.</li>
-        <li>The header and footer remain visible for easy navigation.</li>
+        <li>You are redirected to a dashboard based on your role.</li>
+        <li>A welcome message with your name is displayed.</li>
+        <li>Use header menu for navigation.</li>
       </ul>
 
-      <h3>Step 3: Roles</h3>
+
+      <!-- ROLES -->
+      <h3>Step 3: Roles & Access</h3>
       <ul>
-        <li><b>Supervisor:</b> Manages users and has access to all features.</li>
-        <li><b>Support Engineer:</b> Manages tickets and provides support to users.</li>
-        <li><b>User:</b> Can create tickets and view their status.</li>
+        <li><b>User:</b> Create tickets, view own tickets, track status.</li>
+        <li><b>Support Engineer:</b> View assigned tickets.</li>
+        <li><b>Supervisor:</b> Access reports and all tickets.</li>
+        <li>Unauthorized users cannot open restricted pages.</li>
       </ul>
 
-      <h3>Step 4: Demo User Credentials</h3>
+
+      <!-- CREATE TICKET -->
+      <h3>Step 4: Create Ticket</h3>
+      <ul>
+        <li>Click <b>Create Ticket</b> from the menu.</li>
+        <li>Fill all mandatory fields.</li>
+        <li>Submit button stays disabled until the form is valid.</li>
+        <li>After submission, ticket is created and you are redirected to Track Ticket page.</li>
+      </ul>
+
+      <b>Mandatory Fields:</b>
+      <ul>
+        <li>Issue Title</li>
+        <li>Description</li>
+        <li>Priority</li>
+        <li>Category</li>
+        <li>Sub-Category</li>
+      </ul>
+
+
+      <!-- MY TICKETS -->
+      <h3>Step 5: My Tickets</h3>
+      <ul>
+        <li>Click <b>My Tickets</b> to see all tickets you created.</li>
+        <li>Displayed using table view.</li>
+        <li>Click any ticket to open Track Ticket page.</li>
+      </ul>
+
+
+      <!-- TRACK TICKET -->
+      <h3>Step 6: Track Ticket</h3>
+      <ul>
+        <li>View full ticket details.</li>
+        <li>Tickets can be selected from dropdown.</li>
+        <li>Direct access supported using URL parameter.</li>
+      </ul>
+
       <p>
-        The following demo credentials are provided for easy access and testing.
-        These are <b>mock users</b> intended only for training and demonstration.
+        Example route:
+        <code>/track-ticket/123</code>
+      </p>
+
+
+      <!-- LIVE CHAT -->
+      <h3>Step 7: Live Chat</h3>
+      <ul>
+        <li>Displays informational placeholder page.</li>
+        <li>Future feature for chat support.</li>
+      </ul>
+
+
+      <!-- REPORTS -->
+      <h3>Step 8: Reports (Supervisor Only)</h3>
+      <ul>
+        <li>Only Supervisors can access this page.</li>
+        <li>Shows analytics and reports (future implementation).</li>
+      </ul>
+
+
+      <!-- ROUTING FEATURES -->
+      <h3>Step 9: Navigation & Routing Features</h3>
+      <ul>
+        <li>Basic Routing</li>
+        <li>Nested Routing</li>
+        <li>Path Parameters</li>
+        <li>Query Parameters</li>
+        <li>Route Guards</li>
+      </ul>
+
+
+      <!-- FORMS -->
+      <h3>Step 10: Forms & Validation</h3>
+      <ul>
+        <li>Reactive Forms used for ticket creation</li>
+        <li>Template Driven Forms supported</li>
+        <li>Field validations applied</li>
+        <li>Invalid forms cannot be submitted</li>
+      </ul>
+
+
+      <!-- CREDENTIALS -->
+      <h3>Step 11: Demo User Credentials</h3>
+      <p>
+        Mock users for testing only.
       </p>
 
       <table class="credential-table">
@@ -68,28 +153,13 @@
         </tbody>
       </table>
 
-      <h3>Step 5: My Ticket</h3>
-      <ul>
-        <li>Click <b>My Ticket</b> from the header to access the tickets you have created.</li>
-        <li>This page displays a list of your tickets with their current status.</li>
-      </ul>
 
-      <h3>Step 6: User Manual</h3>
+      <!-- FOOTER LINKS -->
+      <h3>Step 12: Additional Pages</h3>
       <ul>
-        <li>Click <b>User Manual</b> from the footer to access this guide.</li>
-        <li>This page provides a brief overview of how to use the application.</li>
-      </ul>
-
-      <h3>Step 7: Technical Details Learnt</h3>
-      <ul>
-        <li>Click <b>Technical Details Learnt</b> from the footer.</li>
-        <li>This page provides details about the project structure and technical implementation.</li>
-      </ul>
-
-      <h3>Step 8: Resource</h3>
-      <ul>
-        <li>Click <b>Resource</b> from the footer.</li>
-        <li>This page provides links to external resources and documentation.</li>
+        <li>User Manual – This guide</li>
+        <li>Technical Details Learnt</li>
+        <li>Resources</li>
       </ul>
 
     </section>

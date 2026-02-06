@@ -3,7 +3,7 @@
   <mat-card class="manual-card">
 
     <!-- Title -->
-    <h1>Technical Skills Learned – L1M4</h1>
+    <h1>Technical Skills Learned – L1M5</h1>
     <mat-divider></mat-divider>
 
     <section>
@@ -13,12 +13,13 @@
         <li>
           Implemented <b>Angular Lifecycle Hooks</b>:
           <ul>
-            <li>Loaded user and ticket data in <b>ngOnInit</b></li>
-            <li>Accessed Material Dialogs in <b>ngAfterViewInit</b></li>
-            <li>Cleaned subscriptions using <b>ngOnDestroy</b></li>
-            <li>Proper subscription management to avoid memory leaks</li>
+            <li>ngOnInit – load user & ticket data</li>
+            <li>ngAfterViewInit – initialize dialogs/material views</li>
+            <li>ngOnDestroy – clean subscriptions</li>
+            <li>Prevented memory leaks using proper cleanup</li>
           </ul>
         </li>
+
 
         <!-- Services & DI -->
         <li>
@@ -26,55 +27,140 @@
           <ul>
             <li>UserService</li>
             <li>TicketService</li>
+            <li>AuthService</li>
             <li>MenuService</li>
-            <li>FilterStateService</li>
+            <li>RoleGuard</li>
             <li>Moved business logic from components to services</li>
-            <li>Components only consume Observables (thin components)</li>
+            <li>Thin components, smart services</li>
           </ul>
         </li>
+
+
+        <!-- Signals -->
+        <li>
+          Used <b>Angular Signals (Modern State Management)</b>:
+          <ul>
+            <li>signal() for state</li>
+            <li>computed() for derived values</li>
+            <li>effect() for side effects</li>
+            <li>Reactive UI without manual subscriptions</li>
+          </ul>
+        </li>
+
 
         <!-- Observables -->
         <li>
-          Used <b>RxJS Observables for Reactive Programming</b>:
+          Applied <b>RxJS Observables for Reactive Programming</b>:
           <ul>
-            <li>Users → Observable&lt;User&gt;</li>
-            <li>Tickets → Observable&lt;Ticket[]&gt;</li>
-            <li>Filters → Observable&lt;FilterState&gt;</li>
+            <li>Observable streams for users & tickets</li>
             <li>Async pipe for automatic subscription handling</li>
+            <li>Improved performance with reactive updates</li>
           </ul>
         </li>
 
-        <!-- Operators -->
+
+        <!-- RxJS Operators -->
         <li>
-          Applied <b>RxJS Operators</b>:
+          Used <b>RxJS Operators</b>:
           <ul>
-            <li><b>map</b> – transform and filter ticket data</li>
-            <li><b>filter</b> – filter tickets by status</li>
-            <li><b>scan</b> – compute ticket counts</li>
-            <li><b>switchMap</b> – reload data on role/filter change</li>
+            <li>map – transform data</li>
+            <li>filter – filter tickets</li>
+            <li>switchMap – reload data dynamically</li>
+            <li>scan – compute counts</li>
           </ul>
         </li>
+
+
+        <!-- Routing -->
+        <li>
+          Implemented <b>Angular Routing Features</b>:
+          <ul>
+            <li>Basic Routing</li>
+            <li>Nested Routing (MainLayout → child routes)</li>
+            <li>Route Parameters (/track-ticket/:id)</li>
+            <li>Query Parameters</li>
+            <li>Lazy Loading</li>
+            <li>Programmatic Navigation using Router</li>
+          </ul>
+        </li>
+
+
+        <!-- Route Guards -->
+        <li>
+          Added <b>Route Guards (Role-Based Security)</b>:
+          <ul>
+            <li>Role-based navigation protection</li>
+            <li>CanActivate guard implementation</li>
+            <li>Prevent unauthorized route access</li>
+            <li>Conditional menu rendering by role</li>
+          </ul>
+        </li>
+
+
+        <!-- Forms -->
+        <li>
+          Worked with <b>Angular Forms</b>:
+          <ul>
+            <li>Reactive Forms (FormGroup, FormControl)</li>
+            <li>Template Driven Forms</li>
+            <li>Dynamic form controls</li>
+            <li>Form validation (required, disabled submit)</li>
+            <li>ValueChanges for dependent dropdowns</li>
+          </ul>
+        </li>
+
+
+        <!-- Material -->
+        <li>
+          Integrated <b>Angular Material UI Components</b>:
+          <ul>
+            <li>MatTable</li>
+            <li>MatDialog</li>
+            <li>MatSelect</li>
+            <li>MatInput</li>
+            <li>MatButton</li>
+            <li>MatSidenav</li>
+            <li>MatCard</li>
+            <li>MatDivider</li>
+          </ul>
+        </li>
+
 
         <!-- Architecture -->
         <li>
-          Followed <b>Reactive & Clean Architecture Principles</b>:
+          Followed <b>Clean & Scalable Architecture Principles</b>:
           <ul>
-            <li>No nested subscriptions</li>
-            <li>No business logic inside components</li>
-            <li>Used BehaviorSubject for shared state</li>
-            <li>Centralized data management in services</li>
-            <li>Fully reactive UI updates</li>
+            <li>Separation of concerns</li>
+            <li>Reusable components</li>
+            <li>Centralized state management</li>
+            <li>Modular feature-based structure</li>
+            <li>No business logic inside templates</li>
           </ul>
         </li>
 
-        <!-- Material Integration -->
+
+        <!-- Performance -->
         <li>
-          Integrated <b>Angular Material Components</b>:
+          Applied <b>Performance & Best Practices</b>:
           <ul>
-            <li>MatTable with reactive data</li>
-            <li>MatDialog for feedback submission</li>
-            <li>MatChips for filtering</li>
-            <li>MatPaginator with reactive pagination</li>
+            <li>Async pipe usage</li>
+            <li>Lazy loading routes</li>
+            <li>Optimized change detection</li>
+            <li>Code splitting</li>
+            <li>Organized folder structure</li>
+          </ul>
+        </li>
+
+
+        <!-- Summary -->
+        <li>
+          <b>Outcome:</b>
+          <ul>
+            <li>Built a complete ticket management system</li>
+            <li>Role-based access control</li>
+            <li>Reactive forms & validation</li>
+            <li>Secure navigation with guards</li>
+            <li>Professional Angular architecture</li>
           </ul>
         </li>
 
