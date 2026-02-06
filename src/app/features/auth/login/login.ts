@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { Router } from '@angular/router';
 import { MockData } from '../../../assets/mock-data';
 import { Role } from '../../../core/models/user.model';
+import { PersistentAuthService } from '../../../core/services/persistent-auth';
 @Component({
   selector: 'app-login',
   imports: [FormsModule,
@@ -25,7 +26,7 @@ export class Login {
   title: string = 'Login';
   username = '';
   password = '';
-  constructor(private router: Router) { }
+  constructor(private router: Router,private persistentAuthService: PersistentAuthService) { }
 
   onLogin() {
     const user = MockData.users.find(u => u.email === this.username && u.password === this.password);
@@ -34,10 +35,11 @@ export class Login {
       alert('Invalid email or password');
       return;
     }
+    this.persistentAuthService.userDetails = user;
     switch (user.role) {
 
       case Role.SUPERVISOR:
-        this.router.navigate(['/admin'], {
+        this.router.navigate(['/supervisor'], {
           queryParams: {
             role: user.role,
             id: user.userId

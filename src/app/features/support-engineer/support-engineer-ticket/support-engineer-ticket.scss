@@ -1,0 +1,45 @@
+.dashboard-container {
+  padding: 20px;
+  min-height: 70vh;
+}
+
+.role-subtitle {
+  color: #666;
+  font-size: 0.9rem;
+  margin-top: -10px;
+}
+
+.support-table {
+  width: 100%;
+  margin-top: 20px;
+  background: transparent;
+
+  th { font-weight: bold; color: #333; }
+}
+
+.attachment-link {
+  font-size: 0.8rem;
+  color: #1976d2;
+  text-decoration: underline;
+}
+
+.action-group {
+  display: flex;
+  gap: 8px;
+
+  button {
+    font-size: 12px;
+    height: 32px;
+    line-height: 32px;
+    
+    mat-icon {
+      font-size: 18px;
+      width: 18px;
+      height: 18px;
+    }
+  }
+}
+
+.success-btn {
+  color: #2e7d32 !important;
+}

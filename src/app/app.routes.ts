@@ -8,6 +8,11 @@ import { Resource } from './features/user-manual/resource/resource';
 import { TechnicalDetailsLearnt } from './features/user-manual/technical-details-learnt/technical-details-learnt';
 import { UserManual } from './features/user-manual/user-manual/user-manual';
 import { Supervisor } from './features/supervisor/supervisor';
+import { userRoutes } from './features/user/user.routes';
+import { authGuard } from './core/Guard/auth-guard';
+import { supportEngineerRoutes } from './features/support-engineer/support-engineer.routes';
+import { supervisorRoutes } from './features/supervisor/supervisor.routes';
+import { Role } from './core/models/user.model';
 
 export const routes: Routes = [
     {
@@ -21,16 +26,27 @@ export const routes: Routes = [
             { path: 'resource', component: Resource },
         ]
     },
-    {
-        path: '',
-        component: MainLayout,
-        children: [
-            { path: 'admin', component: Supervisor },
-            { path: 'support', component: SupportEngineer },
-            { path: 'user', component: User },
-
-
-
-        ]
+   {
+  path: '',
+  component: MainLayout,
+  children: [
+   {
+      path: 'supervisor',
+      children: supervisorRoutes, canActivate: [authGuard],
+      data: { roles: [Role.SUPERVISOR] }   
     },
+     {
+      path: 'support',
+      children: supportEngineerRoutes, canActivate: [authGuard],
+      data: { roles: [Role.SUPPORT_ENGINEER] } 
+    },
+    {
+      path: 'user',
+      children: userRoutes, canActivate: [authGuard],
+      data: { roles: [Role.USER] }   
+    }
+  ]
+}
+
 ];
+

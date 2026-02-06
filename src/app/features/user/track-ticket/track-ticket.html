@@ -1,0 +1,39 @@
+<div class="container">
+  <header>
+    <h1>Track Ticket</h1>
+    <p class="mat-body-1">View and monitor the current status of your support tickets.</p>
+  </header>
+
+  <mat-card class="track-card">
+    <mat-card-content>
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Select a Ticket</mat-label>
+        <mat-select [value]="selectedTicket?.ticketId" (selectionChange)="onTicketChange($event.value)">
+          @for (ticket of tickets; track ticket.ticketId) {
+            <mat-option [value]="ticket.ticketId">{{ ticket.title }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      @if (selectedTicket) {
+        <div class="details-grid">
+          <div class="detail-row"><strong>Id</strong>: {{ selectedTicket.ticketId }}</div>
+          <div class="detail-row"><strong>Created</strong>: {{ selectedTicket.createdByName }}</div>
+          <div class="detail-row">
+            <strong>Status</strong>: 
+            <span class="status-badge">{{ TicketStatus[selectedTicket.status] | ticketStatus }}</span>
+          </div>
+          <div class="detail-row"><strong>Description</strong>: {{ selectedTicket.description }}</div>
+          <div class="detail-row"><strong>Priority</strong>: {{ TicketPriority[selectedTicket.priority] }}</div>
+          <div class="detail-row"><strong>Category</strong>: {{ TicketCategory[selectedTicket.category] }}</div>
+          <div class="detail-row"><strong>Sub Category</strong>: {{TicketSubCategory[selectedTicket.subCategory] }}</div>
+        </div>
+      } @else {
+        <div class="placeholder-msg">
+          <mat-icon>info</mat-icon>
+          <p>Please select a ticket from the dropdown to view its status and details.</p>
+        </div>
+      }
+    </mat-card-content>
+  </mat-card>
+</div>

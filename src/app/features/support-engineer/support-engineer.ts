@@ -7,13 +7,13 @@ import { ActivatedRoute } from '@angular/router';
 import { MockData } from '../../assets/mock-data';
 import { MatTableModule } from '@angular/material/table';
 import { InteractiveRow } from '../../shared/directive/interactive-row';
-import { TicketStatusPipe } from '../../shared/pipes/ticket-status-pipe';
 import { Ticket, TicketPriority, TicketStatus } from '../../core/models/ticket.model';
 import { AssignTicketDialog } from './assign-ticket-dialog/assign-ticket-dialog';
 import { MatDialog } from '@angular/material/dialog';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
 import { AgePipePipe } from '../../shared/pipes/age-pipe-pipe';
+import { PersistentAuthService } from '../../core/services/persistent-auth';
 
 @Component({
   selector: 'app-support-engineer',
@@ -22,7 +22,6 @@ import { AgePipePipe } from '../../shared/pipes/age-pipe-pipe';
     MatTableModule,
     CommonModule,
     InteractiveRow,
-    TicketStatusPipe,
     MatButtonModule,
     MatChipsModule,
     AgePipePipe,
@@ -39,15 +38,13 @@ export class SupportEngineer {
   selectedFilter = 'ALL';
   filteredTickets: Ticket[] = [];
   constructor(
-    private route: ActivatedRoute,
+    private persistentAuthService: PersistentAuthService,
     private dialog: MatDialog
   ) {
-    route.queryParams.subscribe(params => {
-      this.userId = params['id'];
-    });
-    this.userName = MockData.users.find(u => u.userId === this.userId)?.name || '';
+   
+    this.userName = MockData.users.find(u => u.userId === persistentAuthService.userDetails?.userId)?.name || '';
     this.userTickets = MockData.tickets.filter(
-      t => t.createdByUserId === this.userId
+      t => t.assignedToUserId === persistentAuthService.userDetails?.userId
     );
     this.filteredTickets = this.userTickets;
   }
