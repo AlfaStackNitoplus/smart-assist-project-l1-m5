@@ -1,0 +1,108 @@
+/* ================================
+   Page container
+================================ */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+  min-height:70vh;
+
+
+  background: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
+
+  min-height: 100vh;
+
+  header {
+    text-align: center;
+
+    h1 {
+      font-size: 2.5rem;
+      color: var(--mat-sys-on-surface);
+      margin-bottom: 8px;
+    }
+
+    p {
+      color: var(--mat-sys-on-surface-variant);
+      font-weight: 500;
+    }
+  }
+}
+
+
+/* ================================
+   Card
+================================ */
+.create-card {
+  width: 100%;
+  max-width: 650px;
+
+  // background: var(--mat-sys-primary-container);
+  color: var(--mat-sys-on-primary-container);
+
+  border-radius: 40px;
+  padding: 40px;
+
+  box-shadow: var(--mat-sys-level2);
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+
+/* ================================
+   Material form field styling
+   (NO ::ng-deep needed)
+================================ */
+.mat-mdc-form-field {
+  width: 100%;
+}
+
+/* outlined input background */
+.mat-mdc-text-field-wrapper {
+  background: var(--mat-sys-surface);
+  border-radius: 10px;
+}
+
+/* required star */
+.mat-mdc-form-field-required-marker {
+  color: var(--mat-sys-error);
+}
+
+
+/* ================================
+   Submit button
+================================ */
+button[type="submit"] {
+  align-self: center;
+  padding: 12px 40px;
+
+  background: var(--mat-sys-primary);
+  color: var(--mat-sys-on-primary);
+
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-transform: none;
+
+  &:disabled {
+    background: var(--mat-sys-surface-variant);
+    color: var(--mat-sys-on-surface-variant);
+    cursor: not-allowed;
+  }
+}
+
+
+/* ================================
+   Responsive
+================================ */
+@media (max-width: 600px) {
+  .create-card {
+    border-radius: 20px;
+    padding: 20px;
+  }
+}

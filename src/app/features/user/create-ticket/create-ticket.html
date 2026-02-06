@@ -1,0 +1,53 @@
+<div class="form-container">
+  <header>
+    <h1>Create Ticket</h1>
+    <p>Submit a new support ticket. Our team will respond at earliest.</p>
+  </header>
+
+  <mat-card class="create-card">
+    <form [formGroup]="ticketForm" (ngSubmit)="onSubmit()">
+      
+      <mat-form-field appearance="outline">
+        <mat-label>Issue Title</mat-label>
+        <input matInput formControlName="issueTitle" placeholder="Enter title">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description" rows="4" placeholder="Enter description"></textarea>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Priority</mat-label>
+        <mat-select formControlName="priority">
+          @for (p of priorities; track p) {
+            <mat-option [value]="p">{{TicketPriority[p]}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Category</mat-label>
+        <mat-select formControlName="category">
+          @for (cat of categories; track cat) {
+            <mat-option [value]="cat">{{ TicketCategory[cat] }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Sub Category</mat-label>
+        <mat-select formControlName="subCategory">
+          @for (sub of availableSubCategories; track sub) {
+            <mat-option [value]="sub">{{ TicketSubCategory[sub] }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <button mat-flat-button color="primary" type="submit" [disabled]="ticketForm.invalid">
+        Create Ticket
+      </button>
+
+    </form>
+  </mat-card>
+</div>

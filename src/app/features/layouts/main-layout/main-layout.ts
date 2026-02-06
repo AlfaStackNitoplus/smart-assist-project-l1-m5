@@ -11,6 +11,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { Menu } from '../../../core/models/menu.model';
 import { MockData } from '../../../assets/mock-data';
 import { Role } from '../../../core/models/user.model';
+import { PersistentAuthService } from '../../../core/services/persistent-auth';
 
 @Component({
   selector: 'app-main-layout',
@@ -28,20 +29,18 @@ import { Role } from '../../../core/models/user.model';
   styleUrl: './main-layout.scss',
 })
 export class MainLayout {
-  version: string = 'L1-M4';
+  version: string = 'L1-M5';
   develop: string = 'Smart Assist Team';
-  userRole: Role;
   userId: string = '';
   constructor(
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private persistentAuthService: PersistentAuthService
+
   ) {
-    route.queryParams.subscribe(params => {
-      this.userId = params['id'];
-    });
-    this.userRole = MockData.users.find(u => u.userId === this.userId)?.role || Role.USER;
+   
   }
   getMenusByRole(): Menu[] {
-    const mapping = MockData.roleMenuMapping.find(r => r.role === this.userRole);
+    const mapping = MockData.roleMenuMapping.find(r => r.role === this.persistentAuthService.userDetails?.role);
     if (!mapping) return [];
 
     return MockData.menus.filter(menu =>

@@ -1,0 +1,43 @@
+.container {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  min-height:70vh;
+
+}
+
+.track-card {
+  margin-top: 2rem;
+  text-align: left;
+  padding: 20px;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.details-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-family: 'Roboto', sans-serif;
+  
+  .detail-row {
+    font-size: 16px;
+    strong {
+      display: inline-block;
+      width: 120px; // Aligns the colons
+      color: #555;
+    }
+  }
+}
+
+.status-badge {
+  background: #e0f2f1;
+  color: #00796b;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: bold;
+}

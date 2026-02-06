@@ -3,3 +3,14 @@
     align-items: center;
     gap: 10px;
 }
+.active-link {
+    background-color: white;
+    --mat-toolbar-container-text-color: var(--mat-sys-on-primary-container);
+    font-weight: 800;
+    border-left: 4px solid var(--mat-sys-primary);
+    padding-left: 12px;
+}
+mat-drawer {
+    --mat-sidenav-container-background-color: var(--mat-sys-primary-fixed);
+    color: var(--mat-sys-background);
+}
