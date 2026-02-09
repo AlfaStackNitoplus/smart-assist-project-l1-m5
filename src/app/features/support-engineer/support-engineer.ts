@@ -14,6 +14,8 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
 import { AgePipePipe } from '../../shared/pipes/age-pipe-pipe';
 import { PersistentAuthService } from '../../core/services/persistent-auth';
+import { BehaviorSubject, combineLatest, map, Observable } from 'rxjs';
+import { TicketService } from '../../core/services/ticket.service';
 
 @Component({
   selector: 'app-support-engineer',
@@ -32,22 +34,40 @@ import { PersistentAuthService } from '../../core/services/persistent-auth';
 export class SupportEngineer {
   userName: string = '';
   userId: string = '';
-  userTickets: Ticket[] = [];
+  // userTickets: Ticket[] = [];
   ticketPriority = TicketPriority;
   ticketStatus = TicketStatus;
   selectedFilter = 'ALL';
-  filteredTickets: Ticket[] = [];
+  // filteredTickets: Ticket[] = [];
+  userTickets$!: Observable<Ticket[]>;   // ✅ Observable
+  filteredTickets$!: Observable<Ticket[]>;
   constructor(
     private persistentAuthService: PersistentAuthService,
-    private router:Router,
-    private dialog: MatDialog
+    private router: Router,
+    private dialog: MatDialog,
+    private ticketService: TicketService
   ) {
 
     this.userName = MockData.users.find(u => u.userId === persistentAuthService.userDetails?.userId)?.name || '';
-    this.userTickets = MockData.tickets.filter(
-      t => t.assignedToUserId === persistentAuthService.userDetails?.userId
+    this.userTickets$ = this.ticketService.getAllTickets();
+
+    this.filteredTickets$ = combineLatest([
+      this.userTickets$,
+      this.filterSubject
+    ]).pipe(
+      map(([tickets, selectedStatuses]) => {
+        // If nothing is selected, show everything
+        if (!selectedStatuses || selectedStatuses.length === 0) {
+          return tickets;
+        }
+
+        // Filter tickets where the string status is in our selected array
+        return tickets.filter(ticket => {
+          const statusString = TicketStatus[ticket.status];
+          return selectedStatuses.includes(statusString);
+        });
+      })
     );
-    this.filteredTickets = this.userTickets;
   }
   getAssigneeName(assigneeId?: string): string {
     if (!assigneeId) return '-';
@@ -84,13 +104,17 @@ export class SupportEngineer {
     }
   }
 
-  onFilterChange(filter: string) {
-    this.selectedFilter = filter;
+  private filterSubject = new BehaviorSubject<string[]>([]);
 
-    this.filteredTickets = this.applyFilter(this.userTickets, filter);
+  onFilterChange(selectedStatuses: string[]) {
+    this.filterSubject.next(selectedStatuses);
   }
   onTicketSelcted(ticketId: number) {
     // Navigate to update the URL when a user selects from dropdown
     this.router.navigate(['support/track-ticket', ticketId]);
+  }
+  getByUserName(userId: string): string {
+    const user = MockData.users.find(u => u.userId === userId);
+    return user ? user.name : '';
   }
 }

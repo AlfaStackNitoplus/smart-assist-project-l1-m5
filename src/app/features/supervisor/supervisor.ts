@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
 import { AgePipePipe } from '../../shared/pipes/age-pipe-pipe';
+import { PersistentAuthService } from '../../core/services/persistent-auth';
 
 @Component({
   selector: 'app-supervisor',
@@ -33,13 +34,11 @@ export class Supervisor {
   selectedFilter = 'ALL';
   filteredTickets: Ticket[] = [];
   constructor(
-    private route: ActivatedRoute,
     private dialog: MatDialog,
-    private router: Router
+    private router: Router,
+    private persistentAuthService: PersistentAuthService
   ) {
-    route.queryParams.subscribe(params => {
-      this.userId = params['id'];
-    });
+    this.userId = this.persistentAuthService.userDetails?.userId || '';
     this.userName = MockData.users.find(u => u.userId === this.userId)?.name || '';
     this.userTickets = MockData.tickets;
     this.filteredTickets = this.userTickets;

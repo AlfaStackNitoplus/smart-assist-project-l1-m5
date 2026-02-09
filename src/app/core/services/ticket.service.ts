@@ -18,4 +18,7 @@ export class TicketService {
       )
     );
   }
+  getAllTickets(): Observable<Ticket[]> {
+    return this.tickets$
+  }
 }

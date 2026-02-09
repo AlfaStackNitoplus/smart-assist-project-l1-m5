@@ -8,10 +8,10 @@ export enum TicketStatus {
   New = 1,
   Assigned=2,
   Input_Requested=3,
-  In_Progress = 4,
-  Resolved = 5,
+  Resolved = 4,
+  Feedback_Received = 5,
   Closed = 6,
-  Feedback_Received = 7
+
 }
 export interface Ticket {
   ticketId: number;
