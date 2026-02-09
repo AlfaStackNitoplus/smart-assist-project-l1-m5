@@ -1,17 +1,18 @@
 <div class="manual-container">
-    <mat-card class="manual-card">
+  <mat-card class="manual-card">
 
-        <!-- Title -->
-        <h1>Project Folder Structure – L1M4</h1>
-        <mat-divider></mat-divider>
-        <!-- Project Structure -->
-        <section>
-            <p>
-                The application follows a <b>feature-based and scalable folder structure</b>,
-                separating core components, layouts, and feature modules.
-            </p>
+    <!-- Title -->
+    <h1>Project Folder Structure – L1M5</h1>
+    <mat-divider></mat-divider>
 
-            <pre class="project-structure">
+    <!-- Project Structure -->
+    <section>
+      <p>
+        The application now follows a <b>feature-based, scalable, and role-driven architecture</b>.
+        Each module is isolated, reusable, and maintainable for enterprise-level growth.
+      </p>
+
+      <pre class="project-structure">
 src/
  └── app/
      ├── core/
@@ -19,18 +20,26 @@ src/
      │   │   ├── header/
      │   │   └── footer/
      │   ├── services/
-     │   │   ├── ticket.service.ts/
-     │   │   └── user.service.ts/
+     │   │   ├── auth.service.ts
+     │   │   ├── ticket.service.ts
+     │   │   ├── user.service.ts
+     │   │   └── filter-state.service.ts
+     │   ├── guards/
+     │   │   ├── auth.guard.ts
+     │   │   └── role.guard.ts
      │   └── models/
      │
      ├── features/
      │   ├── auth/
      │   │   └── login/
+     │   ├── dashboard/
      │   ├── admin/
      │   ├── support-engineer/
      │   ├── user/
-     │   │   └── my-ticket/
-     │   └── user-manual/
+     │   │   ├── my-ticket/
+     │   │   └── track-ticket/
+     │   ├── user-manual/
+     │   └── resources/
      │
      ├── layouts/
      │   ├── auth-layout/
@@ -41,37 +50,54 @@ src/
      └── app.config.ts
       </pre>
 
-            <ul>
-                <li><b>Core</b>: Shared components like Header & Footer, and services like Auth service.</li>
-                <li><b>Features</b>: Business modules such as Login, Admin, Support Engineer, User and User Manual</li>
-                <li><b>Layouts</b>: Separate layouts for authentication and main app</li>
-                <li><b>Routing</b>: Centralized route configuration in app.routes.ts</li>
-            </ul>
-        </section>
+      <ul>
+        <li><b>Core</b>: Shared components, services, guards, and models used across the app</li>
+        <li><b>Services</b>: Centralized business logic and API/data handling</li>
+        <li><b>Guards</b>: Role-based access control and route protection</li>
+        <li><b>Features</b>: Independent business modules (Login, Dashboard, Tickets, Manual, etc.)</li>
+        <li><b>Layouts</b>: Separate layouts for authentication and main application UI</li>
+        <li><b>Routing</b>: Centralized routing with lazy loading and guards</li>
+      </ul>
+    </section>
 
-        <!-- External Resources -->
-        <section>
-            <h2>External Resources</h2>
-            <mat-divider></mat-divider>
-            <ul>
-                <li>
-                    <a href="https://angular.io/docs" target="_blank" rel="noopener noreferrer">
-                        Angular Documentation
-                    </a>
-                </li>
-                <li>
-                    <a href="https://material.angular.io/components/categories" target="_blank"
-                        rel="noopener noreferrer">
-                        Angular Material Components
-                    </a>
-                </li>
-                <li>
-                    <a href="https://rxjs.dev/guide/overview" target="_blank" rel="noopener noreferrer">
-                        RxJS Documentation
-                    </a>
-                </li>
-            </ul>
-        </section>
+    <!-- Improvements in L1M5 -->
+    <section>
+      <h2>Enhancements in L1M5</h2>
+      <mat-divider></mat-divider>
 
-    </mat-card>
+      <ul>
+        <li>Implemented <b>Role-Based Route Guards</b> (Supervisor, Support Engineer, User)</li>
+        <li>Added <b>Track Ticket</b> feature with dynamic routing</li>
+        <li>Improved <b>Reactive state management using RxJS</b></li>
+        <li>Centralized <b>shared services</b> for better maintainability</li>
+        <li>Reduced component complexity (thin components pattern)</li>
+        <li>Better <b>scalability & clean architecture</b></li>
+      </ul>
+    </section>
+
+    <!-- External Resources -->
+    <section>
+      <h2>External Resources</h2>
+      <mat-divider></mat-divider>
+
+      <ul>
+        <li>
+          <a href="https://angular.io/docs" target="_blank" rel="noopener noreferrer">
+            Angular Documentation
+          </a>
+        </li>
+        <li>
+          <a href="https://material.angular.io/components/categories" target="_blank" rel="noopener noreferrer">
+            Angular Material Components
+          </a>
+        </li>
+        <li>
+          <a href="https://rxjs.dev/guide/overview" target="_blank" rel="noopener noreferrer">
+            RxJS Documentation
+          </a>
+        </li>
+      </ul>
+    </section>
+
+  </mat-card>
 </div>
