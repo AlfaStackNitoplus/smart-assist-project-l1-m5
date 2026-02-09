@@ -35,7 +35,7 @@ export class Login {
       alert('Invalid email or password');
       return;
     }
-    this.persistentAuthService.userDetails = user;
+    this.persistentAuthService.setUser(user);
     switch (user.role) {
 
       case Role.SUPERVISOR:

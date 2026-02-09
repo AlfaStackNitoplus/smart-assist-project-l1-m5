@@ -1,13 +1,7 @@
 <div class="dashboard-container">
-  <!-- Welcome Card -->
-  <mat-card class="welcome-card">
-    <mat-card-title>
-      Welcome, {{ userName }} 👋
-    </mat-card-title>
-    <mat-card-content>
-      <!-- Here are your tickets and their statuses. -->
-    </mat-card-content>
-  </mat-card>
+  <div class="greeting-section">
+    <h1>Hello, {{ userName }}!</h1>
+  </div>
   <div class="filter-bar">
     <mat-chip-listbox #chipList (click)="onFilterChange(chipList.value)">
       <mat-chip-option value="OPEN">Open</mat-chip-option>

@@ -4,11 +4,10 @@
   </div>
 
   <div class="filter-bar">
-    <mat-chip-listbox #chipList (click)="onFilterChange(chipList.value)">
-      <mat-chip-option value="OPEN">Open</mat-chip-option>
-      <mat-chip-option value="CLOSED">Closed</mat-chip-option>
-      <mat-chip-option value="NEW">New Assignment</mat-chip-option>
-
+    <mat-chip-listbox #chipList multiple (change)="onFilterChange(chipList.value)">
+      <mat-chip-option value="New">New</mat-chip-option>
+      <mat-chip-option value="Closed">Closed</mat-chip-option>
+      <mat-chip-option value="Assigned">Assigned</mat-chip-option>
     </mat-chip-listbox>
   </div>
   <!-- Tickets Table -->
@@ -28,7 +27,7 @@
         </thead>
 
         <tbody>
-          @for (ticket of filteredTickets; track ticket.ticketId) {
+          @for (ticket of filteredTickets$ | async; track ticket.ticketId) {
           <tr appInteractiveRow>
             <td>
               <button mat-button color="primary" (click)="onTicketSelcted(ticket.ticketId)">
@@ -37,7 +36,7 @@
             </td>
             <td>{{ ticketStatus[ticket.status] }}</td>
             <td>{{ ticket.createdAt | age}}</td>
-            <td>{{ ticket.createdByUserId }}</td>
+            <td>{{ getByUserName(ticket.createdByUserId) }}</td>
             <td>{{ ticket.rating || '' }}</td>
 
             <td>
@@ -46,7 +45,7 @@
           </tr>
           } @empty {
           <tr>
-            <td colspan="3" class="no-data">
+            <td colspan="6" class="no-data">
               🚫 No tickets found
             </td>
           </tr>

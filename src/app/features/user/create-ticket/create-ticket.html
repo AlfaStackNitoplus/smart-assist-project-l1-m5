@@ -1,6 +1,8 @@
-<div class="form-container">
-  <app-title-header [header]="'Create Ticket'"
-    [subHeader]="'Submit a new support ticket. Our team will respond at earliest.'"></app-title-header>
+<div class="container">
+  <header>
+    <h1>Create Ticket</h1>
+    <p class="mat-body-1">Submit a new support ticket. Our team will respond at earliest.</p>
+  </header>
   <mat-card class="create-card">
     <form [formGroup]="ticketForm" (ngSubmit)="onSubmit()">
 
